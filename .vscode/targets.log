@@ -1,0 +1,685 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
+
+# Make data base, printed on Sat May 21 13:35:21 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# makefile (from `Makefile', line 18)
+SRC = so_long.c map.c map_check.c move.c draw.c
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from `Makefile', line 51)
+INCLUDES = ./code/so_long.h ./code/ft_printf/ft_printf.h ./code/get_next_line/get_next_line.h ./code/libft/libft.h ./code/bonus/so_long_bonus.h
+# makefile (from `Makefile', line 46)
+OTHER_SRCS = $(SRCS_FT_PRINTF) $(SRCS_GET_NEXT_LINE) $(SRCS_LIBFT)
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /Users/hboumahd/Desktop/Philosophers
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+# makefile (from `Makefile', line 37)
+LIBFT_FOLDER = ./code/libft/
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# makefile (from `Makefile', line 47)
+OTHER_OBJ = ${OTHER_SRCS:.c=.o}
+# makefile (from `Makefile', line 44)
+SRCS_LIBFT = $(addprefix $(LIBFT_FOLDER), $(LIBFT_FILES))
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# makefile (from `Makefile', line 14)
+BONUS = so_long_bonus
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cdf80033bk/T/vscode-ipc-7174820c-d508-4122-8fd0-e1210fad1f5c.sock
+# environment
+VSCODE_CWD = /Users/hboumahd/Desktop
+# makefile (from `Makefile', line 35)
+SRCS_GET_NEXT_LINE = $(addprefix $(GET_NEXT_LINE_FOLDER), $(GET_NEXT_LINE_FILES))
+# environment
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.Xvoz6l4g6x/Render
+# environment
+PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/hboumahd/goinfre/devtools/Android/sdk/tools/bin:/Users/hboumahd/goinfre/devtools/Android/sdk/emulator:/Users/hboumahd/goinfre/devtools/flutter/bin:/Users/hboumahd/goinfre/devtools/gradle/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:/Users/hboumahd/goinfre/devtools/jdk/Contents/Home/bin
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# makefile (from `Makefile', line 20)
+SRCOBJ = ${SRCS:.c=.o}
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.dGg5W6qnSI/Listeners
+# automatic
+%F = $(notdir $%)
+# makefile (from `Makefile', line 33)
+GET_NEXT_LINE_FOLDER = ./code/get_next_line/
+# makefile (from `Makefile', line 24)
+SRC_B = draw_bonus.c map_bonus.c map_check_bonus.c move_bonus.c so_long_bonus.c animate_bonus.c boss_moves_bonus.c
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /Users/hboumahd/Desktop/Philosophers
+# makefile (from `Makefile', line 38)
+LIBFT_FILES = ft_isdigit.c ft_memset.c ft_strjoin.c ft_strtrim.c ft_isprint.c ft_putchar_fd.c ft_strlcat.c ft_substr.c ft_itoa.c ft_atoi.c ft_putendl_fd.c ft_strlcpy.c ft_tolower.c ft_bzero.c  ft_putnbr_fd.c ft_strlen.c ft_toupper.c ft_calloc.c ft_memchr.c ft_putstr_fd.c ft_strmapi.c ft_isalnum.c ft_memcmp.c ft_split.c ft_strncmp.c ft_isalpha.c ft_memcpy.c ft_strchr.c ft_strnstr.c ft_isascii.c ft_memmove.c ft_strdup.c ft_strrchr.c ft_striteri.c
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# makefile (from `Makefile', line 31)
+SRCS_FT_PRINTF = $(addprefix $(FT_PRINTF_FOLDER), $(FT_PRINTF_FILES))
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /Users/hboumahd
+# default
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
+# environment
+VSCODE_CLI = 1
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/hboumahd/Library/Application Support/Code/CachedData/57fd6d0195bb9b9d1b49f6da5db789060795de47
+# environment
+LOGNAME = hboumahd
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+GRADLE_USER_HOME = /Users/hboumahd/goinfre/devtools/gradle
+# environment
+XPC_FLAGS = 0x0
+# environment
+COLORTERM = truecolor
+# default
+MAKE = $(MAKE_COMMAND)
+# makefile (from `Makefile', line 17)
+SRC_FOLDER = ./code/
+# environment
+LC_TERMINAL = iTerm2
+# makefile (from `Makefile', line 29)
+FT_PRINTF_FOLDER = ./code/ft_printf/
+# makefile (from `Makefile', line 19)
+SRCS = $(addprefix $(SRC_FOLDER), $(SRC))
+# environment
+SHLVL = 3
+# makefile (from `Makefile', line 55)
+CC = cc 
+# environment
+DEV_TOOLS = /Users/hboumahd/goinfre/devtools
+# environment
+JAVA_HOME = /Users/hboumahd/goinfre/devtools/jdk/Contents/Home
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = hboumahd
+# makefile
+.DEFAULT_GOAL := so_long
+# default
+MAKECMDGOALS := all
+# environment
+TERM_SESSION_ID = w0t0p0:D3CD967A-65A0-4A90-BBAC-3CC45E49310D
+# makefile (from `Makefile', line 13)
+NAME = so_long
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
+# environment
+TERM_PROGRAM = iTerm.app
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000cdf80033bk/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/hboumahd/Library/Application Support/Code/1.67.0-main.sock
+# makefile (from `Makefile', line 26)
+SRCOBJ_B = ${SRCS_B:.c=.o}
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+TERM_PROGRAM_VERSION = 3.4.13
+# makefile (from `Makefile', line 34)
+GET_NEXT_LINE_FILES = get_next_line.c get_next_line_utils.c
+# environment
+XPC_SERVICE_NAME = 0
+# environment
+LC_TERMINAL_VERSION = 3.4.13
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+ITERM_SESSION_ID = w0t0p0:D3CD967A-65A0-4A90-BBAC-3CC45E49310D
+# environment
+COLORFGBG = 7;0
+# environment
+__CF_USER_TEXT_ENCODING = 0x18D72:0:0
+# environment
+COMMAND_MODE = unix2003
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+ITERM_PROFILE = Default
+# environment
+APPS = /Users/hboumahd/goinfre/apps
+# environment
+ANDROID_SDK_ROOT = /Users/hboumahd/goinfre/devtools/Android/sdk
+# environment
+LC_ALL = C
+# makefile (from `Makefile', line 49)
+LIBS = ./code/ft_printf.a ./code/get_next_line.a ./code/libft.a
+# environment
+SECURITYSESSIONID = 186a8
+# automatic
+^F = $(notdir $^)
+# environment
+GRADLE_OPTS = -Dgradle.user.home=/Users/hboumahd/goinfre/devtools/gradle
+# makefile (from `Makefile', line 30)
+FT_PRINTF_FILES = ft_printf.c ft_putchar.c ft_putnbr_base.c ft_putstr.c ft_putnbr_base2.c ft_putnbr.c
+# default
+SUFFIXES := 
+# environment
+JAVA_17_HOME = /Users/hboumahd/goinfre/devtools/jdk/Contents/Home
+# makefile (from `Makefile', line 54)
+FLAGS = -Wall -Wextra -Werror 
+# makefile (from `Makefile', line 23)
+SRC_FOLDER_B = ./code/bonus/
+# makefile (from `Makefile', line 25)
+SRCS_B = $(addprefix $(SRC_FOLDER_B), $(SRC_B))
+# default
+.INCLUDE_DIRS = /usr/local/include
+# environment
+MAKELEVEL := 0
+# environment
+LANG = C
+# environment
+TERM = xterm-256color
+# environment
+VSCODE_PID = 1249
+# variable set hash-table stats:
+# Load=107/1024=10%, Rehash=0, Collisions=8/164=5%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 16777227, inode 2904436): 8 files, no impossibilities.
+# code (device 0, inode 0): No files, 1 impossibilities.
+
+# 8 files, 1 impossibilities in 2 directories.
+
+# Implicit Rules
+
+%.o: %.c ./code/so_long.h ./code/ft_printf/ft_printf.h ./code/get_next_line/get_next_line.h ./code/libft/libft.h ./code/bonus/so_long_bonus.h
+#  commands to execute (from `Makefile', line 58):
+	$(CC) ${FLAGS} -Imlx -c $< -o $@
+	
+
+# 1 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+# Not a target:
+code/libft/ft_memmove.c:
+ 
+make: *** No rule to make target `code/so_long.o', needed by `so_long'.  Stop.
+
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_strchr.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/ft_printf/ft_putnbr_base.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_toupper.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/bonus/map_check_bonus.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_strnstr.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_putstr_fd.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/so_long.o:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+b: so_long_bonus
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all: so_long
+#  Command-line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+code/bonus/move_bonus.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/ft_printf/ft_putnbr.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_putchar_fd.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_atoi.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_strtrim.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_putendl_fd.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_strmapi.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-21 10:45:46
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+code/get_next_line/get_next_line_utils.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_memcpy.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_itoa.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_memcmp.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/bonus/so_long_bonus.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_isdigit.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/ft_printf/ft_printf.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_memchr.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_memset.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/ft_printf/ft_putnbr_base2.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/draw.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_tolower.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/ft_printf/ft_putstr.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_strrchr.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_strjoin.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_split.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+fclean: clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 88):
+	@rm -f ${NAME} ${BONUS}
+	
+
+# Not a target:
+code/libft/ft_strlcat.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/bonus/map_bonus.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/ft_printf/ft_putchar.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_bzero.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_isprint.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+so_long_bonus: code/bonus/draw_bonus.o code/bonus/map_bonus.o code/bonus/map_check_bonus.o code/bonus/move_bonus.o code/bonus/so_long_bonus.o code/bonus/animate_bonus.o code/bonus/boss_moves_bonus.o code/ft_printf/ft_printf.c code/ft_printf/ft_putchar.c code/ft_printf/ft_putnbr_base.c code/ft_printf/ft_putstr.c code/ft_printf/ft_putnbr_base2.c code/ft_printf/ft_putnbr.c code/get_next_line/get_next_line.c code/get_next_line/get_next_line_utils.c code/libft/ft_isdigit.c code/libft/ft_memset.c code/libft/ft_strjoin.c code/libft/ft_strtrim.c code/libft/ft_isprint.c code/libft/ft_putchar_fd.c code/libft/ft_strlcat.c code/libft/ft_substr.c code/libft/ft_itoa.c code/libft/ft_atoi.c code/libft/ft_putendl_fd.c code/libft/ft_strlcpy.c code/libft/ft_tolower.c code/libft/ft_bzero.c code/libft/ft_putnbr_fd.c code/libft/ft_strlen.c code/libft/ft_toupper.c code/libft/ft_calloc.c code/libft/ft_memchr.c code/libft/ft_putstr_fd.c code/libft/ft_strmapi.c code/libft/ft_isalnum.c code/libft/ft_memcmp.c code/libft/ft_split.c code/libft/ft_strncmp.c code/libft/ft_isalpha.c code/libft/ft_memcpy.c code/libft/ft_strchr.c code/libft/ft_strnstr.c code/libft/ft_isascii.c code/libft/ft_memmove.c code/libft/ft_strdup.c code/libft/ft_strrchr.c code/libft/ft_striteri.c
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 71):
+	@$(MAKE) -C $(FT_PRINTF_FOLDER)
+	@$(MAKE) -C $(GET_NEXT_LINE_FOLDER)
+	@$(MAKE) -C $(LIBFT_FOLDER)
+	@echo "make the ft_printf.a" 
+	@echo "make the get_next_line.a"
+	@echo "make the libft.a"
+	@echo "make the so_long_bonus program"
+	@$(CC) ${FLAGS} $(SRCOBJ_B) $(LIBS) -lmlx -framework OpenGL -framework AppKit -o $(BONUS)
+	
+
+# Not a target:
+code/bonus/boss_moves_bonus.o:
+ 
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/move.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_strlen.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_striteri.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/get_next_line/get_next_line.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+re: fclean all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/bonus/animate_bonus.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 85):
+	@rm -f $(LIBS) $(OTHER_OBJ) $(SRCOBJ) $(SRCOBJ_B)
+	
+
+# Not a target:
+code/bonus/draw_bonus.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_putnbr_fd.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/map.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_calloc.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_substr.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/map_check.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_isalpha.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+so_long: code/so_long.o code/map.o code/map_check.o code/move.o code/draw.o code/ft_printf/ft_printf.c code/ft_printf/ft_putchar.c code/ft_printf/ft_putnbr_base.c code/ft_printf/ft_putstr.c code/ft_printf/ft_putnbr_base2.c code/ft_printf/ft_putnbr.c code/get_next_line/get_next_line.c code/get_next_line/get_next_line_utils.c code/libft/ft_isdigit.c code/libft/ft_memset.c code/libft/ft_strjoin.c code/libft/ft_strtrim.c code/libft/ft_isprint.c code/libft/ft_putchar_fd.c code/libft/ft_strlcat.c code/libft/ft_substr.c code/libft/ft_itoa.c code/libft/ft_atoi.c code/libft/ft_putendl_fd.c code/libft/ft_strlcpy.c code/libft/ft_tolower.c code/libft/ft_bzero.c code/libft/ft_putnbr_fd.c code/libft/ft_strlen.c code/libft/ft_toupper.c code/libft/ft_calloc.c code/libft/ft_memchr.c code/libft/ft_putstr_fd.c code/libft/ft_strmapi.c code/libft/ft_isalnum.c code/libft/ft_memcmp.c code/libft/ft_split.c code/libft/ft_strncmp.c code/libft/ft_isalpha.c code/libft/ft_memcpy.c code/libft/ft_strchr.c code/libft/ft_strnstr.c code/libft/ft_isascii.c code/libft/ft_memmove.c code/libft/ft_strdup.c code/libft/ft_strrchr.c code/libft/ft_striteri.c
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 61):
+	@$(MAKE) -C $(FT_PRINTF_FOLDER)
+	@$(MAKE) -C $(GET_NEXT_LINE_FOLDER)
+	@$(MAKE) -C $(LIBFT_FOLDER)
+	@echo "make the ft_printf.a" 
+	@echo "make the get_next_line.a"
+	@echo "make the libft.a"
+	@echo "make the so_long program"
+	@$(CC) ${FLAGS} $(SRCOBJ) $(LIBS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	
+
+# Not a target:
+code/libft/ft_strlcpy.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_strncmp.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_isascii.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_isalnum.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+code/libft/ft_strdup.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=64/1024=6%, Rehash=0, Collisions=12/180=7%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+
+# Finished Make data base on Sat May 21 13:35:21 2022
+
+ 
