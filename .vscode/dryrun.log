@@ -1,52 +1,6 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory `/Users/hboumahd/Desktop/Philosophers'
 make: Leaving directory `/Users/hboumahd/Desktop/Philosophers'
  
-make: *** No rule to make target `code/so_long.o', needed by `so_long'.
-make: *** No rule to make target `code/map.o', needed by `so_long'.
-make: *** No rule to make target `code/map_check.o', needed by `so_long'.
-make: *** No rule to make target `code/move.o', needed by `so_long'.
-make: *** No rule to make target `code/draw.o', needed by `so_long'.
-make: *** No rule to make target `code/ft_printf/ft_printf.c', needed by `so_long'.
-make: *** No rule to make target `code/ft_printf/ft_putchar.c', needed by `so_long'.
-make: *** No rule to make target `code/ft_printf/ft_putnbr_base.c', needed by `so_long'.
-make: *** No rule to make target `code/ft_printf/ft_putstr.c', needed by `so_long'.
-make: *** No rule to make target `code/ft_printf/ft_putnbr_base2.c', needed by `so_long'.
-make: *** No rule to make target `code/ft_printf/ft_putnbr.c', needed by `so_long'.
-make: *** No rule to make target `code/get_next_line/get_next_line.c', needed by `so_long'.
-make: *** No rule to make target `code/get_next_line/get_next_line_utils.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_isdigit.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_memset.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_strjoin.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_strtrim.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_isprint.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_putchar_fd.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_strlcat.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_substr.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_itoa.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_atoi.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_putendl_fd.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_strlcpy.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_tolower.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_bzero.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_putnbr_fd.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_strlen.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_toupper.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_calloc.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_memchr.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_putstr_fd.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_strmapi.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_isalnum.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_memcmp.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_split.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_strncmp.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_isalpha.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_memcpy.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_strchr.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_strnstr.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_isascii.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_memmove.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_strdup.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_strrchr.c', needed by `so_long'.
-make: *** No rule to make target `code/libft/ft_striteri.c', needed by `so_long'.
+make: *** No targets specified and no makefile found.  Stop.
 
