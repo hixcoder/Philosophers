@@ -6,46 +6,54 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 10:46:35 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/05/29 11:27:37 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/05/29 13:08:20 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include <time.h>
 
-int primes[10] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
+pthread_mutex_t mutex;
 
-void *routine(void *arg)
+// ================= Difference between trylock and lock in C   =================  
+// pthread_mutex_trylock is instant ==> if you are not lock then lock , and if you are lock then ok I will excute the rest of the code
+// pthread_mutex_lock is always waiting ==> if you are not lock then lock, and if you are lock then wait until you unlock then excute the rest of the code 
+
+void *routine()
 {
-    int i;
-
-    i = *(int *)arg;
-    printf("value of prime in thread %d is %d \n", i, primes[i]);
-    free(arg);
-    return (NULL);
+   if (pthread_mutex_trylock(&mutex) == 0)
+   {
+       printf("Got lock\n");
+       sleep(1);
+       pthread_mutex_unlock(&mutex);
+   }
+   else
+   {
+       printf("Didn't get lock\n");
+   }
+   return (NULL);
 }
 
 int main()
 {
-    int j = 2;
+    int j = 4;
     pthread_t th[j];
     int i;
-    int *a;
 
     i = -1;
-    while (++i < j)
+    pthread_mutex_init(&mutex, NULL);
+    while(++i < j)
     {
-        a = malloc(sizeof(int));
-        *a = i;
-        if (pthread_create(&th[i], NULL, &routine, a) != 0)
+        if(pthread_create(&th[i], NULL, &routine, NULL))
             return (1);
     }
-
+    
     i = -1;
     while (++i < j)
     {
-        if (pthread_join(th[i], NULL) != 0)
+        if (pthread_join(th[i], NULL))
             return (2);
     }
+    pthread_mutex_destroy(&mutex);
     return (0);
 }
