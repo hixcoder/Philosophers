@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 10:46:35 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/05/28 18:32:28 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/05/29 10:19:04 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,32 @@ void *routine() {
 
 int main()
 {
-    pthread_t t1;
-    pthread_t t2;
+    int j = 88;
+    pthread_t th[j];
+    int i;
     
 
     // initialize a mutex
     pthread_mutex_init(&mutex, NULL);
     
-    // for initialize a thread use create
-    if (pthread_create(&t1, NULL, &routine, NULL) != 0)
-        return (1);
-    if (pthread_create(&t2, NULL, &routine, NULL) != 0)
-        return (2);
-        
-    // for wait until excution
-    if (pthread_join(t1, NULL) != 0)
-        return (3);
-    
-    if (pthread_join(t2, NULL) != 0)
-        return (4);
+    i = -1;
+    while (++i < j)
+    {
+        if (pthread_create(&th[i], NULL, &routine, NULL) != 0)
+            return (1);
+        printf("thread %d has started\n", i);
+    }
+
+    i = -1;
+     while (++i < j)
+    {
+        if (pthread_join(th[i], NULL) != 0)
+            return (2);
+        printf("thread %d has finished\n", i);
+    }
+
     pthread_mutex_destroy(&mutex);
     printf("Number of mails: %d\n",mails);
+     
     return (0);
 }
