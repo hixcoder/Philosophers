@@ -6,14 +6,14 @@
 #    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/21 10:44:51 by hboumahd          #+#    #+#              #
-#    Updated: 2022/05/28 16:51:32 by hboumahd         ###   ########.fr        #
+#    Updated: 2022/05/30 11:50:13 by hboumahd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 # madatory
-SRCS = philo.c
+SRCS = philo.c init.c
 SRCOBJ = ${SRCS:.c=.o}
 
 INCLUDES = philo.h 
@@ -26,15 +26,26 @@ CC = gcc -pthread
 	$(CC) ${FLAGS} -c $< -o $@
 	
 $(NAME) : ${SRCOBJ}
-	@echo "make the philo program"
+	@echo "|+| make the philo program ==> ${GREEN}DONE${RESET}"
 	@$(CC) ${FLAGS} $(SRCOBJ) -o $(NAME)
 
 all : $(NAME) 
 
 clean :
 	@rm -f $(SRCOBJ)
+	@echo "|-| remove object files ==> ${RED}DONE${RESET}"
 
 fclean : clean
 	@rm -f ${NAME}
+	@echo "|-| remove the program  ==> ${RED}DONE${RESET}"
 
 re : fclean all
+
+
+# colors used
+GREEN = \033[0;92m
+RED = \033[0;91m
+RESET = \033[0m
+
+#command for see all colors that you can use
+# ===>   bash -c 'for c in {0..255}; do tput setaf $c; tput setaf $c | cat -v; echo =$c; done'  <===
