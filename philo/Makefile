@@ -6,14 +6,14 @@
 #    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/21 10:44:51 by hboumahd          #+#    #+#              #
-#    Updated: 2022/05/30 11:50:13 by hboumahd         ###   ########.fr        #
+#    Updated: 2022/05/31 11:44:40 by hboumahd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 # madatory
-SRCS = philo.c init.c
+SRCS = main.c parse.c
 SRCOBJ = ${SRCS:.c=.o}
 
 INCLUDES = philo.h 

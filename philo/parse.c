@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   parse.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:28:55 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/05/30 11:52:03 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/05/30 12:24:25 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void ft_error(char *s)
+{
+	printf("%s\n",s);
+	exit(1);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -20,7 +26,7 @@ int	ft_atoi(const char *str)
 	i = 0;
 	nbr = 0;
 	if (str[i] == '-')
-        exit(1);
+        ft_error("Invalid Arguments");
     if (str[i] == '+')
         i++;
 	while (str[i] != '\0')
@@ -28,19 +34,21 @@ int	ft_atoi(const char *str)
 		if (str[i] >= '0' && str[i] <= '9')
 			nbr = nbr * 10 + (str[i++] - '0');
 		else
-			exit(1);
+			ft_error("Invalid Arguments");
 	}
 	if (nbr < -2147483648 || nbr > 2147483647)
-		exit(1);
+		ft_error("Invalid Arguments");
 	return ((int) nbr);
 }
 
-void ft_init_philos(t_philos *philos, char **av)
+void ft_parse_args(t_data *data, char **av)
 {
-    philos->nbr_of_philos = ft_atoi(av[1]);
-    philos->time_to_die = ft_atoi(av[2]);
-    philos->time_to_eat = ft_atoi(av[3]);
-    philos->time_to_sleep = ft_atoi(av[4]);
-    if (!av[5])
-        philos->nbr_of_meals = ft_atoi(av[5]);
+    data->nbr_of_philos = ft_atoi(av[1]);
+    data->time_to_die = ft_atoi(av[2]);
+    data->time_to_eat = ft_atoi(av[3]);
+    data->time_to_sleep = ft_atoi(av[4]);
+    if (av[5] != NULL)
+        data->nbr_of_meals = ft_atoi(av[5]);
+	else
+		data->nbr_of_meals = 0;
 }
