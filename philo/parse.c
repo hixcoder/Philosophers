@@ -12,12 +12,6 @@
 
 #include "philo.h"
 
-void ft_error(char *s)
-{
-	printf("%s\n",s);
-	exit(1);
-}
-
 int	ft_atoi(const char *str)
 {
 	int		i;
@@ -41,7 +35,7 @@ int	ft_atoi(const char *str)
 	return ((int) nbr);
 }
 
-void ft_parse_args(t_data *data, char **av)
+void ft_parse_data(t_data *data, char **av)
 {
     data->nbr_of_philos = ft_atoi(av[1]);
     data->time_to_die = ft_atoi(av[2]);
