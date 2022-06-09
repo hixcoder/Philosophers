@@ -20,9 +20,9 @@ int	ft_atoi(const char *str)
 	i = 0;
 	nbr = 0;
 	if (str[i] == '-')
-        ft_error("Invalid Arguments");
-    if (str[i] == '+')
-        i++;
+		ft_error("Invalid Arguments");
+	if (str[i] == '+')
+		i++;
 	while (str[i] != '\0')
 	{
 		if (str[i] >= '0' && str[i] <= '9')
@@ -37,12 +37,17 @@ int	ft_atoi(const char *str)
 
 void ft_parse_data(t_data *data, char **av)
 {
-    data->nbr_of_philos = ft_atoi(av[1]);
-    data->time_to_die = ft_atoi(av[2]);
-    data->time_to_eat = ft_atoi(av[3]);
-    data->time_to_sleep = ft_atoi(av[4]);
-    if (av[5] != NULL)
-        data->nbr_of_meals = ft_atoi(av[5]);
+	data->nbr_of_philos = ft_atoi(av[1]);
+	if (data->nbr_of_philos == 0)
+		ft_error("Invalid Arguments");
+	data->time_to_die = ft_atoi(av[2]);
+	data->time_to_eat = ft_atoi(av[3]);
+	data->time_to_sleep = ft_atoi(av[4]);
+	if (av[5] != NULL)
+		data->nbr_of_meals = ft_atoi(av[5]);
 	else
 		data->nbr_of_meals = 0;
+
+	// here we initialize the start_time
+	data->start_time = 0;
 }
