@@ -6,14 +6,14 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 11:28:06 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/09 13:01:28 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/09 16:37:57 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 // ct: is the current time
-int ft_time(t_data *data)
+int ft_current_time(t_data *data)
 {
     int     timeMill;
     struct  timeval ct;
@@ -26,10 +26,10 @@ int ft_time(t_data *data)
     return (timeMill);
 }
 
-void ft_error(char *s)
+int ft_error(char *s)
 {
 	printf("%s\n",s);
-	exit(1);
+	return (ERROR);
 }
 
 void ft_malloc_error(void *allocated, t_data *data, int all)

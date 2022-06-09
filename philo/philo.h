@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 10:46:38 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/09 13:08:38 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/09 16:37:57 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@
 # include <sys/time.h>
 # include <pthread.h>
 
+# define ERROR 1
+# define SUCCESS 0
 
 typedef struct s_philo
 {
     pthread_t   philo_th;
     int         philo_id;
     int         eat_times;
+    int         time_of_last_eat;
     struct t_data      *data;
 
 }   t_philo;
@@ -47,8 +50,8 @@ typedef struct s_data
 void ft_parse_data(t_data *data, char **av);
 void ft_create_forks(t_data *data);
 void ft_malloc_error(void *allocated, t_data *data, int all);
-void ft_error(char *s);
-int ft_time(t_data *data);
+int ft_error(char *s);
+int ft_current_time(t_data *data);
 
 void ft_take_rfork(t_data  *data, t_philo *philos);
 void ft_take_lfork(t_data  *data, t_philo *philos);
