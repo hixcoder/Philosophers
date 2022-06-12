@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 11:28:06 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/09 16:37:57 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/11 11:44:00 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,26 @@ int ft_error(char *s)
 	return (ERROR);
 }
 
+void ft_clean(t_data *data)
+{
+    int i;
+
+    i = -1;
+    while (++i < data->nbr_of_philos)
+        pthread_mutex_destroy(&data->forks[i]);
+    i = -1;
+    free(data->isforks_used);
+    data->isforks_used = NULL;
+    free(data->forks);
+    data->forks = NULL;
+    free(data->philos);
+    data->philos = NULL;
+}
+
 void ft_malloc_error(void *allocated, t_data *data, int all)
 {
     if (all == 1)
-    {
-        free(data->forks);
-        data->forks = NULL;
-        free(data->philos);
-        data->philos = NULL;
-    }
+        ft_clean(data);
     else
     {
         free(allocated);
@@ -54,10 +65,14 @@ void ft_create_forks(t_data *data)
     int i;
     
     data->forks = malloc(data->nbr_of_philos * sizeof(pthread_mutex_t));
-    if (!data->forks)
+    data->isforks_used = malloc(data->nbr_of_philos * sizeof(int));
+    if (!data->forks || !data->isforks_used)
         ft_malloc_error(data->forks, data, 0);
+    pthread_mutex_init(&data->death_mutex, NULL);
     i = -1;
-    while (++i < data->nbr_of_philos)
+    while (++i < data->nbr_of_philos){
         pthread_mutex_init(&data->forks[i], NULL);
+        data->isforks_used[i] = 0;
+    }
 }
 
