@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 10:46:38 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/11 11:58:57 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/13 12:36:14 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <sys/time.h>
 # include <pthread.h>
 
-# define ERROR 1
+# define ERROR -1
 # define SUCCESS 0
 
 typedef struct s_philo
@@ -47,23 +47,27 @@ typedef struct s_data
 	pthread_mutex_t	death_mutex;
     t_philo         *philos;
     pthread_mutex_t *forks;
-    int             *isforks_used;
     
 }   t_data;
 
 
-void ft_parse_data(t_data *data, char **av);
-void ft_create_forks(t_data *data);
-void ft_malloc_error(void *allocated, t_data *data, int all);
-int ft_error(char *s);
-int ft_current_time(t_data *data);
+int ft_parse_data(t_data *data, char **av);
+int ft_malloc_error(void *allocated, t_data *data, int all);
+int  ft_error(char *s);
+int  ft_current_time(t_data *data);
+void ft_clean(t_data *data);
 
 void ft_take_rfork(t_data  *data, t_philo *philos);
 void ft_take_lfork(t_data  *data, t_philo *philos);
 void ft_eat(t_data  *data, t_philo *philos);
 void ft_sleep_think(t_data  *data, t_philo *philos);
-int ft_death_check(t_data  *data, t_philo *philos);
-void ft_clean(t_data *data);
+void ft_death_check(t_data  *data, t_philo *philos);
+
+int ft_create_forks(t_data *data);
+void *routine(void *arg);
+int  ft_create_philos(t_data *data);
+
+void	ft_msleep(int sleep_ms, t_data *data);
 
 
 #endif
