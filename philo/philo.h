@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 10:46:38 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/13 12:36:14 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/14 16:49:13 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_data
     int             nbr_of_meals;
     int             start_time;
     int             death_status;
+    pthread_mutex_t print_mutex;
 	pthread_mutex_t	death_mutex;
     t_philo         *philos;
     pthread_mutex_t *forks;

@@ -52,11 +52,9 @@ int ft_parse_data(t_data *data, char **av)
 	if (av[5] != NULL)
 		data->nbr_of_meals = ft_atoi(av[5]);
 	else
-		data->nbr_of_meals = 0;
-	if (data->nbr_of_meals == ERROR)
+		data->nbr_of_meals = -1;
+	if (data->nbr_of_meals == 0)
 		return (ERROR);
-
-	// here we initialize the start_time
 	data->start_time = 0;
 	data->death_status = 0;
 	return (SUCCESS);

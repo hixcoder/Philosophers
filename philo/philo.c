@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:43:39 by ubunto            #+#    #+#             */
-/*   Updated: 2022/06/13 11:49:50 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/14 17:39:19 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int ft_create_forks(t_data *data)
     if (!data->forks)
         return (ft_malloc_error(data->forks, data, 0));
     pthread_mutex_init(&data->death_mutex, NULL);
+    pthread_mutex_init(&data->print_mutex, NULL);
     i = -1;
     while (++i < data->nbr_of_philos)
         pthread_mutex_init(&data->forks[i], NULL);
@@ -35,7 +36,7 @@ void *routine(void *arg)
     philo = (t_philo *) arg;
     data = (t_data *) philo->data;
     if(philo->philo_id % 2 == 0)
-        usleep(1000);
+        usleep(100);
     while(data->death_status == 0)
     {
         ft_take_rfork(data, philo);
@@ -43,7 +44,7 @@ void *routine(void *arg)
         if (philo->lfork == 1 && philo->rfork == 1)
         {
             ft_eat(data, philo);
-            if (philo->eat_times >= data->nbr_of_meals && data->nbr_of_meals != 0)
+            if (philo->eat_times >= data->nbr_of_meals && data->nbr_of_meals > 0)
                 break ;
             ft_sleep_think(data, philo);
         }

@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 11:28:06 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/13 12:39:01 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/14 16:49:21 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ int ft_check_before_eat(t_data  *data, t_philo *philo)
 void	ft_msleep(int sleep_ms, t_data *data)
 {
 	int	end_time;
+    int i;
 
 	end_time = ft_current_time(data) + sleep_ms;
+    i = 0;
 	while (ft_current_time(data) < end_time && data->death_status == 0)
-		usleep(100);
+		i++;
 }
 
 int ft_error(char *s)
@@ -58,6 +60,8 @@ void ft_clean(t_data *data)
     i = -1;
     while (++i < data->nbr_of_philos)
         pthread_mutex_destroy(&data->forks[i]);
+    pthread_mutex_destroy(&data->death_mutex);
+    pthread_mutex_destroy(&data->print_mutex);
     i = -1;
     free(data->forks);
     data->forks = NULL;
