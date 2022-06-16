@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 11:28:06 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/15 13:33:46 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/16 17:22:54 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int ft_current_time(t_data *data)
     
     gettimeofday(&ct, NULL);
     if (data->start_time == 0)
-        data->start_time = (int)(1000 * ct.tv_sec + ct.tv_usec / 1000); 
-    timeMill = (int)(1000 * ct.tv_sec + ct.tv_usec / 1000) - data->start_time;
+        data->start_time = (1000 * ct.tv_sec + ct.tv_usec / 1000); 
+    timeMill =(int)(1000 * ct.tv_sec + ct.tv_usec / 1000 - data->start_time);
     return (timeMill);
 }
 
@@ -38,12 +38,13 @@ int ft_check_before_eat(t_data  *data, t_philo *philo)
 void	ft_msleep(int sleep_ms, t_data *data)
 {
 	int	end_time;
-    int i;
+    // int i;
     
-    i = -1;
+    // i = -1;
 	end_time = ft_current_time(data) + sleep_ms;
 	while (ft_current_time(data) < end_time && data->death_status == 0)
-        i++;
+	// while (ft_current_time(data) < end_time)
+        usleep(10);
 }
 
 int ft_error(char *s)
@@ -60,6 +61,7 @@ void ft_clean(t_data *data)
     while (++i < data->nbr_of_philos)
         pthread_mutex_destroy(&data->forks[i]);
     pthread_mutex_destroy(&data->death_mutex);
+    pthread_mutex_unlock(&data->print_mutex);
     pthread_mutex_destroy(&data->print_mutex);
     i = -1;
     free(data->forks);

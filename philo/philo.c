@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:43:39 by ubunto            #+#    #+#             */
-/*   Updated: 2022/06/15 13:38:56 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/16 17:25:14 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void *routine(void *arg)
     philo = (t_philo *) arg;
     data = (t_data *) philo->data;
     if(philo->philo_id % 2 == 0)
-        usleep(1000);
+        usleep(500);
+    // while(1)
     while(data->death_status == 0)
     {
         ft_take_rfork(data, philo);
@@ -48,7 +49,6 @@ void *routine(void *arg)
                 break ;
             ft_sleep_think(data, philo);
         }
-        ft_death_check(data, philo);
     }
    return (NULL);
 }
@@ -56,6 +56,7 @@ void *routine(void *arg)
 int    ft_create_philos(t_data *data)
 {
     int i;
+    int j;
     
     data->philos = malloc(sizeof(t_philo) * data->nbr_of_philos);
     if (data->philos == NULL)
@@ -71,12 +72,21 @@ int    ft_create_philos(t_data *data)
         data->philos[i].rfork = 0;
         if (pthread_create(&data->philos[i].philo_th, NULL, &routine, (void *) &data->philos[i]) != 0)
             return (ERROR);
-    }
-    i = -1;
-    while (++i < data->nbr_of_philos)
-    {
-        if (pthread_join(data->philos[i].philo_th, NULL) != 0)
+        if (pthread_detach(data->philos[i].philo_th) != 0)
             return (ERROR);
     }
+    while (1)
+    {
+        j = -1;
+        while (++j < data->nbr_of_philos)
+        {
+            if (ft_death_check(data,&data->philos[j]) == 1)
+            {
+                return (SUCCESS);
+            }
+        }
+        
+    }
+    
     return (SUCCESS);
 }

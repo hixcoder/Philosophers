@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 10:46:38 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/15 13:27:37 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/16 17:02:14 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_data
     int             time_to_eat;
     int             time_to_sleep;
     int             nbr_of_meals;
-    int             start_time;
+    long long       start_time;
     int             death_status;
     pthread_mutex_t print_mutex;
 	pthread_mutex_t	death_mutex;
@@ -62,7 +62,8 @@ void ft_take_rfork(t_data  *data, t_philo *philos);
 void ft_take_lfork(t_data  *data, t_philo *philos);
 void ft_eat(t_data  *data, t_philo *philos);
 void ft_sleep_think(t_data  *data, t_philo *philos);
-void ft_death_check(t_data  *data, t_philo *philos);
+// void ft_death_check(t_data  *data, t_philo *philos);
+int ft_death_check(t_data  *data, t_philo *philo);
 
 int ft_create_forks(t_data *data);
 void *routine(void *arg);

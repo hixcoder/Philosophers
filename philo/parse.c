@@ -56,6 +56,6 @@ int ft_parse_data(t_data *data, char **av)
 	if (data->nbr_of_meals == 0)
 		return (ERROR);
 	data->start_time = 0;
-	data->death_status = 0;
+	// data->death_status = 0;
 	return (SUCCESS);
 }
