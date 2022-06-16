@@ -38,7 +38,7 @@ int	ft_atoi(const char *str)
 int ft_parse_data(t_data *data, char **av)
 {
 	data->nbr_of_philos = ft_atoi(av[1]);
-	if (data->nbr_of_philos <= 0)
+	if (data->nbr_of_philos == ERROR)
 		return (ERROR);
 	data->time_to_die = ft_atoi(av[2]);
 	if (data->time_to_die == ERROR)

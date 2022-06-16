@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:43:39 by ubunto            #+#    #+#             */
-/*   Updated: 2022/06/14 17:39:19 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/15 13:38:56 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void *routine(void *arg)
     philo = (t_philo *) arg;
     data = (t_data *) philo->data;
     if(philo->philo_id % 2 == 0)
-        usleep(100);
+        usleep(1000);
     while(data->death_status == 0)
     {
         ft_take_rfork(data, philo);

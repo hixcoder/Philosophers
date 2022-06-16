@@ -6,7 +6,7 @@
 /*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 11:28:06 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/14 16:49:21 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/15 13:33:46 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ int ft_current_time(t_data *data)
     
     gettimeofday(&ct, NULL);
     if (data->start_time == 0)
-        data->start_time = 1000 * (int)ct.tv_sec + (int)ct.tv_usec / 1000; 
-    timeMill = (1000 * (int)ct.tv_sec + (int)ct.tv_usec / 1000) - data->start_time;
-    
+        data->start_time = (int)(1000 * ct.tv_sec + ct.tv_usec / 1000); 
+    timeMill = (int)(1000 * ct.tv_sec + ct.tv_usec / 1000) - data->start_time;
     return (timeMill);
 }
 
@@ -40,11 +39,11 @@ void	ft_msleep(int sleep_ms, t_data *data)
 {
 	int	end_time;
     int i;
-
+    
+    i = -1;
 	end_time = ft_current_time(data) + sleep_ms;
-    i = 0;
 	while (ft_current_time(data) < end_time && data->death_status == 0)
-		i++;
+        i++;
 }
 
 int ft_error(char *s)
