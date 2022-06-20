@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 10:46:35 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/16 16:42:59 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/20 10:08:23 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,18 @@
 int main(int ac, char **av)
 {
     t_data  data;
-    int     status;
     
     if (ac >= 5 && ac <= 6)
     {
         if (ft_parse_data(&data, av) == ERROR)
             return (ft_error("Invalid Arguments"));
-        ft_create_forks(&data);
-        status = ft_create_philos(&data);
+        if (ft_create_forks(&data) == ERROR)
+            return (ERROR);
+        if (ft_create_philos(&data) == ERROR)
+            return (ERROR);
         ft_clean(&data);
     }
     else
-        status = ft_error("Invalid Arguments");
-    return (status);
+        return (ft_error("Invalid Arguments"));
+    return (SUCCESS);
 }
