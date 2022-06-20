@@ -30,7 +30,7 @@ int	ft_atoi(const char *str)
 		else
 			return (ERROR);
 	}
-	if (nbr < -2147483648 || nbr > 2147483647)
+	if (nbr < -2147483648 || nbr > 2147483647 || nbr == 0)
 		return (ERROR);
 	return ((int) nbr);
 }
@@ -56,6 +56,6 @@ int ft_parse_data(t_data *data, char **av)
 	if (data->nbr_of_meals == 0)
 		return (ERROR);
 	data->start_time = 0;
-	// data->death_status = 0;
+	data->death_status = 0;
 	return (SUCCESS);
 }

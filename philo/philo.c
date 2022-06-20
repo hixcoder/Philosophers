@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:43:39 by ubunto            #+#    #+#             */
-/*   Updated: 2022/06/16 17:25:14 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/20 09:48:35 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void *routine(void *arg)
 int    ft_create_philos(t_data *data)
 {
     int i;
-    int j;
     
     data->philos = malloc(sizeof(t_philo) * data->nbr_of_philos);
     if (data->philos == NULL)
@@ -75,18 +74,6 @@ int    ft_create_philos(t_data *data)
         if (pthread_detach(data->philos[i].philo_th) != 0)
             return (ERROR);
     }
-    while (1)
-    {
-        j = -1;
-        while (++j < data->nbr_of_philos)
-        {
-            if (ft_death_check(data,&data->philos[j]) == 1)
-            {
-                return (SUCCESS);
-            }
-        }
-        
-    }
-    
+    ft_death_checker(data);
     return (SUCCESS);
 }

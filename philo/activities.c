@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   activities.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:12:27 by ubunto            #+#    #+#             */
-/*   Updated: 2022/06/16 17:24:45 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/20 09:42:02 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,24 +78,4 @@ void ft_sleep_think(t_data  *data, t_philo *philo)
     	printf("%d %d is thinking\n", ft_current_time(data),philo->philo_id);
 		pthread_mutex_unlock(&data->print_mutex);
 	}
-}
-
-int ft_death_check(t_data  *data, t_philo *philo)
-{
-	int time_without_eat;
-
-	time_without_eat = ft_current_time(data) - philo->time_of_last_eat;
-	// if (time_without_eat >= data->time_to_die)
-	if (time_without_eat >= data->time_to_die && data->death_status == 0)
-	{
-		printf("%d =======> check death of philo %d ==> time without eat : %d\n", ft_current_time(data), philo->philo_id, time_without_eat);
-		pthread_mutex_lock(&data->death_mutex);
-		data->death_status = 1;
-		pthread_mutex_unlock(&data->death_mutex);
-		pthread_mutex_lock(&data->print_mutex);
-		printf("%d %d died\n", ft_current_time(data),philo->philo_id);
-		pthread_mutex_unlock(&data->print_mutex);
-		return (1);
-	}
-	return (0);
 }

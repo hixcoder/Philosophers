@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utiles.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 11:28:06 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/16 17:22:54 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/20 09:47:04 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,46 +38,43 @@ int ft_check_before_eat(t_data  *data, t_philo *philo)
 void	ft_msleep(int sleep_ms, t_data *data)
 {
 	int	end_time;
-    // int i;
-    
-    // i = -1;
+
 	end_time = ft_current_time(data) + sleep_ms;
 	while (ft_current_time(data) < end_time && data->death_status == 0)
-	// while (ft_current_time(data) < end_time)
-        usleep(10);
+        usleep(50);
 }
 
-int ft_error(char *s)
+int ft_is_died(t_data  *data, t_philo *philo)
 {
-	printf("%s\n",s);
-	return (ERROR);
+	int time_without_eat;
+
+	time_without_eat = ft_current_time(data) - philo->time_of_last_eat;
+	if (time_without_eat >= data->time_to_die && data->death_status == 0)
+	{
+		printf("%d =======> check death of philo %d ==> time without eat : %d\n", ft_current_time(data), philo->philo_id, time_without_eat);
+		pthread_mutex_lock(&data->death_mutex);
+		data->death_status = 1;
+		pthread_mutex_unlock(&data->death_mutex);
+		pthread_mutex_lock(&data->print_mutex);
+		printf("%d %d died\n", ft_current_time(data),philo->philo_id);
+		pthread_mutex_unlock(&data->print_mutex);
+		return (1);
+	}
+	return (0);
 }
 
-void ft_clean(t_data *data)
+void ft_death_checker(t_data  *data)
 {
-    int i;
+    int j;
 
-    i = -1;
-    while (++i < data->nbr_of_philos)
-        pthread_mutex_destroy(&data->forks[i]);
-    pthread_mutex_destroy(&data->death_mutex);
-    pthread_mutex_unlock(&data->print_mutex);
-    pthread_mutex_destroy(&data->print_mutex);
-    i = -1;
-    free(data->forks);
-    data->forks = NULL;
-    free(data->philos);
-    data->philos = NULL;
-}
-
-int ft_malloc_error(void *allocated, t_data *data, int all)
-{
-    if (all == 1)
-        ft_clean(data);
-    else
+	while (1)
     {
-        free(allocated);
-        allocated = NULL;
+        j = -1;
+        while (++j < data->nbr_of_philos)
+        {
+            if (ft_is_died(data,&data->philos[j]) == 1)
+                return ;
+        }
+        
     }
-	return (ft_error("Allocation error"));
 }
