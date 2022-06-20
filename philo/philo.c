@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:43:39 by ubunto            #+#    #+#             */
-/*   Updated: 2022/06/20 13:51:45 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/20 16:08:24 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_create_philos(t_data *data)
 
 	data->philos = malloc(sizeof(t_philo) * data->nbr_of_philos);
 	if (data->philos == NULL)
-		return (ERROR);
+		return (ft_error("Allocation Error"));
 	i = -1;
 	while (++i < data->nbr_of_philos)
 	{
@@ -69,9 +69,9 @@ int	ft_create_philos(t_data *data)
 		data->philos[i].rfork = 0;
 		if (pthread_create(&data->philos[i].philo_th, NULL, \
 		&routine, (void *) &data->philos[i]) != 0)
-			return (ERROR);
+			return (ft_error("Thread Error"));
 		if (pthread_detach(data->philos[i].philo_th) != 0)
-			return (ERROR);
+			return (ft_error("Thread Error"));
 	}
 	ft_death_checker(data);
 	return (SUCCESS);
