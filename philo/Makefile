@@ -6,7 +6,7 @@
 #    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/21 10:44:51 by hboumahd          #+#    #+#              #
-#    Updated: 2022/06/20 09:39:24 by hboumahd         ###   ########.fr        #
+#    Updated: 2022/06/20 10:38:55 by hboumahd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCOBJ = ${SRCS:.c=.o}
 INCLUDES = philo.h 
 
 # -g for the debugger
-FLAGS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror -g
 CC = gcc -pthread
 
 %.o : %.c ${INCLUDES}

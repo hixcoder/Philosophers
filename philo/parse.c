@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                             :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:28:55 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/05/30 12:24:25 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/20 14:33:11 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int	ft_atoi(const char *str)
 		else
 			return (ERROR);
 	}
-	if (nbr < -2147483648 || nbr > 2147483647 || nbr == 0)
+	if (nbr > 2147483647)
 		return (ERROR);
 	return ((int) nbr);
 }
 
-int ft_parse_data(t_data *data, char **av)
+int	ft_parse_data(t_data *data, char **av)
 {
 	data->nbr_of_philos = ft_atoi(av[1]);
 	if (data->nbr_of_philos == ERROR)
@@ -53,8 +53,6 @@ int ft_parse_data(t_data *data, char **av)
 		data->nbr_of_meals = ft_atoi(av[5]);
 	else
 		data->nbr_of_meals = -1;
-	if (data->nbr_of_meals == 0)
-		return (ERROR);
 	data->start_time = 0;
 	data->death_status = 0;
 	return (SUCCESS);
