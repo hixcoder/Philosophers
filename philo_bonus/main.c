@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 17:15:53 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/20 22:40:51 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/21 11:40:23 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,26 @@
 #include <stdio.h>
 #include <pthread.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #define THREAD_NUM 4
 
-sem_t *sema;
-
-void *routine(void *args)
-{
-    int i = 1;
-    i++;
-    sem_wait(sema);
-    usleep(1000);
-    printf("hello from thread %d\n", *(int *)args);
-    sem_post(sema);
-    free(args); 
-}
-
+// how to use fork function
 int main()
 {
-    int i;
-    int *a;
-    pthread_t th[THREAD_NUM];
-    
-    // init the semaphore
-    // sem_init(&semaphore, 0, 1);
-    sem_unlink("sem_forks");
-    sema = sem_open("sem_forks", O_CREAT, 0644, 5);
-    int x = 0;
-    for(i = 0; i < THREAD_NUM;  i++)
+    int id1;
+    int id2;
+    int id;
+
+    id1 = fork();
+    // if (id1 != getpid())
+    //     printf("main process = %d\n", getpid());
+    if (id1 != 0)
     {
-        a = malloc(sizeof(int));
-        *a = i;
-        if (pthread_create(&th[i], NULL, &routine, a) != 0)
-            perror("failed to create thread");
+        printf("id1 = %d\n", id1);
+        id2 = fork();
+        if (id2 != 0)
+            printf("id2 = %d\n", id2);
     }
-    for(i = 0; i < THREAD_NUM;  i++)
-    {
-        if (pthread_join(th[i], NULL) != 0)
-            perror("failed to create thread");
-    }
-    // destroy the semaphore
-    sem_close(sema);
     return (0);
 }
