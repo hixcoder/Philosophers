@@ -6,14 +6,14 @@
 #    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/21 10:44:51 by hboumahd          #+#    #+#              #
-#    Updated: 2022/05/28 16:43:55 by hboumahd         ###   ########.fr        #
+#    Updated: 2022/06/21 10:35:34 by hboumahd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 BONUS = philo_bonus
 
 # bonus
-SRCS_B = philo_bonus.c
+SRCS_B = main.c 
 SRCOBJ_B = ${SRCS_B:.c=.o}
 
 
