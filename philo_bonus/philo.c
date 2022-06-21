@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:43:39 by ubunto            #+#    #+#             */
-/*   Updated: 2022/06/21 13:59:05 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:04:29 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_create_philos(t_data *data)
 	i = -1;
 	while (++i < data->nbr_of_philos)
 	{
-		data->philos[i].philo_id = i + 1;
+		data->philos[i ].philo_id = i + 1;
 		data->philos[i].data = (struct t_data *) data;
 		data->philos[i].eat_times = 0;
 		data->philos[i].time_of_last_eat = 0;

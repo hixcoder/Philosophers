@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:28:55 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/21 14:18:07 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:53:10 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_atoi(const char *str)
 	i = 0;
 	nbr = 0;
 	if (str[i] == '-')
-		return (ERROR);
+		ft_error("Invalid Arguments");
 	if (str[i] == '+')
 		i++;
 	while (str[i] != '\0')
@@ -28,34 +28,23 @@ int	ft_atoi(const char *str)
 		if (str[i] >= '0' && str[i] <= '9')
 			nbr = nbr * 10 + (str[i++] - '0');
 		else
-			return (ERROR);
+			ft_error("Invalid Arguments");
 	}
 	if (nbr > 2147483647)
-		return (ERROR);
+		ft_error("Invalid Arguments");
 	return ((int) nbr);
 }
 
-int	ft_parse_data(t_data *data, char **av)
+void	ft_parse_data(t_data *data, char **av)
 {
 	data->nbr_of_philos = ft_atoi(av[1]);
-	if (data->nbr_of_philos == ERROR)
-		return (ERROR);
 	data->time_to_die = ft_atoi(av[2]);
-	if (data->time_to_die == ERROR)
-		return (ERROR);
 	data->time_to_eat = ft_atoi(av[3]);
-	if (data->time_to_eat == ERROR)
-		return (ERROR);
 	data->time_to_sleep = ft_atoi(av[4]);
-	if (data->time_to_sleep == ERROR)
-		return (ERROR);
 	if (av[5] != NULL)
-		data->nbr_of_meals = ft_atoi(av[5]);		
+		data->nbr_of_meals = ft_atoi(av[5]);
 	else
-		data->nbr_of_meals = -2;
-	if (data->nbr_of_meals == ERROR)
-		return (ERROR);
+		data->nbr_of_meals = -1;
 	data->start_time = 0;
 	data->death_status = 0;
-	return (SUCCESS);
 }

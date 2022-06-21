@@ -6,38 +6,46 @@
 #    By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/21 10:44:51 by hboumahd          #+#    #+#              #
-#    Updated: 2022/06/21 10:35:34 by hboumahd         ###   ########.fr        #
+#    Updated: 2022/06/21 13:26:25 by hboumahd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-BONUS = philo_bonus
+NAME = philo_bonus
 
-# bonus
-SRCS_B = main.c 
-SRCOBJ_B = ${SRCS_B:.c=.o}
+# Bonus
+SRCS = main.c parse.c utiles.c activities.c philo.c clean.c 
+SRCOBJ = ${SRCS:.c=.o}
 
-
-INCLUDES = philo_bonus.h
+INCLUDES = philo.h 
 
 # -g for the debugger
-FLAGS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror -g
 CC = gcc -pthread
 
 %.o : %.c ${INCLUDES}
 	$(CC) ${FLAGS} -c $< -o $@
-
-$(BONUS): ${SRCOBJ_B} 
-	@echo "make the philo_bonus program"
-	@$(CC) ${FLAGS} $(SRCOBJ_B) -o $(BONUS)
-
-bonus: $(BONUS)
+	
+$(NAME) : ${SRCOBJ}
+	@echo "|+| make the philo_bonus program ==> ${GREEN}DONE${RESET}"
+	@$(CC) ${FLAGS} $(SRCOBJ) -o $(NAME)
 
 all : $(NAME) 
 
 clean :
-	@rm -f $(SRCOBJ_B)
+	@rm -f $(SRCOBJ)
+	@echo "|-| remove object files ==> ${RED}DONE${RESET}"
 
 fclean : clean
-	@rm -f ${BONUS}
+	@rm -f ${NAME}
+	@echo "|-| remove the program  ==> ${RED}DONE${RESET}"
 
 re : fclean all
+
+
+# colors used
+GREEN = \033[0;92m
+RED = \033[0;91m
+RESET = \033[0m
+
+#command for see all colors that you can use
+# ===>   bash -c 'for c in {0..255}; do tput setaf $c; tput setaf $c | cat -v; echo =$c; done'  <===

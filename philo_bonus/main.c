@@ -5,35 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/20 17:15:53 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/21 11:40:23 by hboumahd         ###   ########.fr       */
+/*   Created: 2022/05/21 10:46:35 by hboumahd          #+#    #+#             */
+/*   Updated: 2022/06/21 13:50:13 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <semaphore.h>
-#include <stdio.h>
-#include <pthread.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "philo.h"
 
-#define THREAD_NUM 4
+// => Please Enter: ./philo [nbr_of_philos] [time_to_die] [time_to_eat]
+//					[time_to_sleep] [nbr_of_meals]
+// => [nbr_of_meals] is optional
 
-// how to use fork function
-int main()
+int	main(int ac, char **av)
 {
-    int id1;
-    int id2;
-    int id;
+	t_data	data;
 
-    id1 = fork();
-    // if (id1 != getpid())
-    //     printf("main process = %d\n", getpid());
-    if (id1 != 0)
-    {
-        printf("id1 = %d\n", id1);
-        id2 = fork();
-        if (id2 != 0)
-            printf("id2 = %d\n", id2);
-    }
-    return (0);
+	if (ac >= 5 && ac <= 6)
+	{
+		ft_parse_data(&data, av);
+			
+		if (ft_create_forks(&data) == ERROR)
+			return (ERROR);
+		if (ft_create_philos(&data) == ERROR)
+		{
+			ft_clean(&data);
+			return (ERROR);
+		}
+		ft_clean(&data);
+	}
+	else
+		return (ft_error("Invalid Arguments"));
+	return (SUCCESS);
 }
