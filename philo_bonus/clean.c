@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 09:38:58 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/21 13:50:43 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/21 14:52:34 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	ft_clean(t_data *data)
 	pthread_mutex_destroy(&data->print_mutex);
 }
 
-int	ft_error(char *s)
+void	ft_error(char *s)
 {
 	printf("%s\n", s);
-	exit(ERROR);
+	exit(EXIT_FAILURE);
 }
 
 int	ft_malloc_error(void *allocated, t_data *data, int all)

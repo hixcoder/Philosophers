@@ -6,24 +6,22 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:43:39 by ubunto            #+#    #+#             */
-/*   Updated: 2022/06/20 17:04:29 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/21 14:53:07 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_create_forks(t_data *data)
+void	ft_create_forks(t_data *data)
 {
 	int	i;
 
-	data->forks = malloc(data->nbr_of_philos * sizeof(pthread_mutex_t));
-	if (!data->forks)
-		return (ft_malloc_error(data->forks, data, 0));
-	pthread_mutex_init(&data->print_mutex, NULL);
-	i = -1;
-	while (++i < data->nbr_of_philos)
-		pthread_mutex_init(&data->forks[i], NULL);
-	return (SUCCESS);
+	sem_unlink("forks_sem");
+	sem_unlink("print_sem");
+	data->forks_sem = sem_open("forks_sem", O_CREAT, 0644, data->nbr_of_philos);
+	data->print_sem = sem_open("print_sem", O_CREAT, 0644, 1);
+	if (data->forks_sem == SEM_FAILED || data->print_sem == SEM_FAILED)
+		exit(ERROR);
 }
 
 void	*routine(void *arg)

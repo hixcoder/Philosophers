@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 10:46:38 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/21 13:53:50 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/21 14:52:44 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <string.h>
 # include <sys/time.h>
 # include <pthread.h>
+#include <fcntl.h> 
+#include <semaphore.h>
 
 # define ERROR -1
 # define SUCCESS 0
@@ -44,15 +46,15 @@ typedef struct s_data
 	int				nbr_of_meals;
 	long long		start_time;
 	int				death_status;
-	pthread_mutex_t	print_mutex;
+	sem_t			print_sem;
 	t_philo			*philos;
-	pthread_mutex_t	*forks;
+	sem_t			*forks_sem;
 }	t_data;
 
 void	ft_parse_data(t_data *data, char **av);
 
 void	ft_clean(t_data *data);
-int		ft_error(char *s);
+void	ft_error(char *s);
 int		ft_malloc_error(void *allocated, t_data *data, int all);
 
 long	ft_current_time(t_data *data);
@@ -65,7 +67,7 @@ void	ft_take_lfork(t_data *data, t_philo *philos);
 void	ft_eat(t_data *data, t_philo *philos);
 void	ft_sleep_think(t_data *data, t_philo *philos);
 
-int		ft_create_forks(t_data *data);
+void	ft_create_forks(t_data *data);
 void	*routine(void *arg);
 int		ft_create_philos(t_data *data);
 
