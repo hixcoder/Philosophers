@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 10:46:35 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/22 12:17:57 by ubunto           ###   ########.fr       */
+/*   Updated: 2022/06/22 17:20:07 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int ac, char **av)
 		ft_parse_data(&data, av);
 		ft_create_forks(&data);
 		ft_create_philos(&data);
+		ft_wait(&data);
 		ft_clean(&data);
 	}
 	else

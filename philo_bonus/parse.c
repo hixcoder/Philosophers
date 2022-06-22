@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:28:55 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/21 13:53:10 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/22 15:33:03 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,4 @@ void	ft_parse_data(t_data *data, char **av)
 	else
 		data->nbr_of_meals = -1;
 	data->start_time = 0;
-	data->death_status = 0;
 }

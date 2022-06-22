@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:12:27 by ubunto            #+#    #+#             */
-/*   Updated: 2022/06/20 13:42:20 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/22 15:02:37 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,86 +14,45 @@
 
 void	ft_take_rfork(t_data *data, t_philo *philo)
 {
-	if (!data->forks || !data->philos)
-		return ;
-	pthread_mutex_lock(&data->forks[philo->philo_id - 1]);
-	if (!data->forks || !data->philos)
-		return ;
+	sem_wait(data->forks_sem);
 	philo->rfork = 1;
-	if (data->death_status == 0)
-	{
-		pthread_mutex_lock(&data->print_mutex);
-		if (!data->forks || !data->philos)
-			return ;
-		printf("%ld %d has taken a fork\n", \
-		ft_current_time(data), philo->philo_id);
-		pthread_mutex_unlock(&data->print_mutex);
-	}
+	sem_wait(data->print_sem);
+	printf("%ld %d has taken a fork\n", ft_current_time(data), philo->philo_id);
+	sem_post(data->print_sem);
 }
 
 void	ft_take_lfork(t_data *data, t_philo *philo)
 {
-	if (!data->forks || !data->philos)
-		return ;
-	pthread_mutex_lock(&data->forks[philo->philo_id % data->nbr_of_philos]);
-	if (!data->forks || !data->philos)
-		return ;
+	sem_wait(data->forks_sem);
 	philo->lfork = 1;
-	if (data->death_status == 0)
-	{
-		if (!data->forks || !data->philos)
-			return ;
-		pthread_mutex_lock(&data->print_mutex);
-		if (!data->forks || !data->philos)
-			return ;
-		printf("%ld %d has taken a fork\n", \
-		ft_current_time(data), philo->philo_id);
-		pthread_mutex_unlock(&data->print_mutex);
-	}
+	sem_wait(data->print_sem);
+	printf("%ld %d has taken a fork\n", ft_current_time(data), philo->philo_id);
+	sem_post(data->print_sem);
 }
 
 void	ft_eat(t_data *data, t_philo *philo)
 {
-	if (data->death_status == 0)
-	{
-		pthread_mutex_lock(&data->print_mutex);
-		if (!data->forks || !data->philos)
-			return ;
-		printf("%ld %d is eating\n", ft_current_time(data), philo->philo_id);
-		pthread_mutex_unlock(&data->print_mutex);
-		philo->time_of_last_eat = ft_current_time(data);
-		ft_msleep(data->time_to_eat, data);
-		philo->eat_times++;
-	}
+	sem_wait(data->print_sem);
+	printf("%ld %d is eating\n", ft_current_time(data), philo->philo_id);
+	sem_post(data->print_sem);
+	philo->time_of_last_eat = ft_current_time(data);
+	ft_msleep(data->time_to_eat, data);
+	philo->eat_times++;
+	
 	philo->rfork = 0;
 	philo->lfork = 0;
-	if (!data->forks || !data->philos)
-		return ;
-	pthread_mutex_unlock(&data->forks[philo->philo_id - 1]);
-	if (!data->forks || !data->philos)
-		return ;
-	pthread_mutex_unlock(&data->forks[philo->philo_id % data->nbr_of_philos]);
+	sem_post(data->forks_sem);
+	sem_post(data->forks_sem);
 }
 
 void	ft_sleep_think(t_data *data, t_philo *philo)
 {
-	if (data->death_status == 0)
-	{
-		if (!data->forks || !data->philos)
-			return ;
-		pthread_mutex_lock(&data->print_mutex);
-		if (!data->forks || !data->philos)
-			return ;
-		printf("%ld %d is sleeping\n", ft_current_time(data), philo->philo_id);
-		pthread_mutex_unlock(&data->print_mutex);
-		ft_msleep(data->time_to_sleep, data);
-	}
-	if (data->death_status == 0)
-	{
-		pthread_mutex_lock(&data->print_mutex);
-		if (!data->forks || !data->philos)
-			return ;
-		printf("%ld %d is thinking\n", ft_current_time(data), philo->philo_id);
-		pthread_mutex_unlock(&data->print_mutex);
-	}
+	sem_wait(data->print_sem);
+	printf("%ld %d is sleeping\n", ft_current_time(data), philo->philo_id);
+	sem_post(data->print_sem);
+	ft_msleep(data->time_to_sleep, data);
+
+	sem_wait(data->print_sem);
+	printf("%ld %d is thinking\n", ft_current_time(data), philo->philo_id);
+	sem_post(data->print_sem);
 }
