@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 09:38:58 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/21 14:52:34 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/22 12:13:04 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,12 @@
 
 void	ft_clean(t_data *data)
 {
-	int	i;
-
-	i = -1;
-	while (++i < data->nbr_of_philos)
-		pthread_mutex_destroy(&data->forks[i]);
-	free(data->forks);
-	data->forks = NULL;
+	sem_close(data->forks_sem);
+	sem_close(data->print_sem);
 	free(data->philos);
 	data->philos = NULL;
-	pthread_mutex_unlock(&data->print_mutex);
-	pthread_mutex_destroy(&data->print_mutex);
+	// pthread_mutex_unlock(&data->print_mutex);
+	// pthread_mutex_destroy(&data->print_mutex);
 }
 
 void	ft_error(char *s)
@@ -33,14 +28,9 @@ void	ft_error(char *s)
 	exit(EXIT_FAILURE);
 }
 
-int	ft_malloc_error(void *allocated, t_data *data, int all)
+void	ft_malloc_error(void *allocated)
 {
-	if (all == 1)
-		ft_clean(data);
-	else
-	{
-		free(allocated);
-		allocated = NULL;
-	}
-	return (ft_error("Allocation error"));
+	free(allocated);
+	allocated = NULL;
+	ft_error("Allocation error");
 }

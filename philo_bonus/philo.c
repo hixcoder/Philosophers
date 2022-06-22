@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:43:39 by ubunto            #+#    #+#             */
-/*   Updated: 2022/06/21 14:53:07 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/22 13:09:23 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_create_forks(t_data *data)
 	data->forks_sem = sem_open("forks_sem", O_CREAT, 0644, data->nbr_of_philos);
 	data->print_sem = sem_open("print_sem", O_CREAT, 0644, 1);
 	if (data->forks_sem == SEM_FAILED || data->print_sem == SEM_FAILED)
-		exit(ERROR);
+		exit(EXIT_FAILURE);
 }
 
 void	*routine(void *arg)
@@ -49,28 +49,25 @@ void	*routine(void *arg)
 	return (NULL);
 }
 
-int	ft_create_philos(t_data *data)
+void	ft_create_philos(t_data *data)
 {
 	int	i;
 
 	data->philos = malloc(sizeof(t_philo) * data->nbr_of_philos);
 	if (data->philos == NULL)
-		return (ft_error("Allocation Error"));
+		ft_malloc_error(data->philos);
 	i = -1;
 	while (++i < data->nbr_of_philos)
 	{
-		data->philos[i ].philo_id = i + 1;
+		data->philos[i].philo_id = i + 1;
 		data->philos[i].data = (struct t_data *) data;
 		data->philos[i].eat_times = 0;
 		data->philos[i].time_of_last_eat = 0;
 		data->philos[i].lfork = 0;
 		data->philos[i].rfork = 0;
-		if (pthread_create(&data->philos[i].philo_th, NULL, \
-		&routine, (void *) &data->philos[i]) != 0)
-			return (ft_error("Thread Error"));
-		if (pthread_detach(data->philos[i].philo_th) != 0)
-			return (ft_error("Thread Error"));
+		if (fork() == 0){
+			routine(&data->philos[i]);
+		}
 	}
 	ft_death_checker(data);
-	return (SUCCESS);
 }

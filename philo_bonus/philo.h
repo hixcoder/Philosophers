@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubunto <ubunto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 10:46:38 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/21 14:52:44 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/22 12:17:35 by ubunto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_data
 	int				nbr_of_meals;
 	long long		start_time;
 	int				death_status;
-	sem_t			print_sem;
+	sem_t			*print_sem;
 	t_philo			*philos;
 	sem_t			*forks_sem;
 }	t_data;
@@ -55,7 +55,7 @@ void	ft_parse_data(t_data *data, char **av);
 
 void	ft_clean(t_data *data);
 void	ft_error(char *s);
-int		ft_malloc_error(void *allocated, t_data *data, int all);
+void	ft_malloc_error(void *allocated);
 
 long	ft_current_time(t_data *data);
 void	ft_msleep(int sleep_ms, t_data *data);
@@ -69,6 +69,6 @@ void	ft_sleep_think(t_data *data, t_philo *philos);
 
 void	ft_create_forks(t_data *data);
 void	*routine(void *arg);
-int		ft_create_philos(t_data *data);
+void	ft_create_philos(t_data *data);
 
 #endif
