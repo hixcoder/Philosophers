@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:43:39 by ubunto            #+#    #+#             */
-/*   Updated: 2022/06/23 16:04:35 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/23 23:31:30 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ft_create_philos(t_data *data)
 			ft_is_died(&data->philos[i]);
 		}
 		else if (j == -1)
-			ft_malloc_error(data, "Allocation Error");
+			ft_malloc_error(data, "Fork Error");
 		
 	}
 }

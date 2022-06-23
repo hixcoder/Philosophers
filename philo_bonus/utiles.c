@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 11:28:06 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/23 16:13:17 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/23 23:40:54 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ void	ft_is_died(t_philo	*philo)
 
 void	*eated_philos(void *arg)
 {
-	int		i;
+	int		philos_finished_eating;
 	t_data	*data;
 	
-	i = -1;
+	philos_finished_eating = -1;
 	data = (t_data *) arg;
 
-	while(++i < data->nbr_of_philos)
+	while(++philos_finished_eating < data->nbr_of_philos)
 		sem_wait(data->finish_eat_sem);
 	sem_post(data->done_sem);
 	return (NULL);
