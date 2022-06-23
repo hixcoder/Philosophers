@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 11:28:06 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/20 14:16:58 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/22 16:47:53 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,6 @@ long	ft_current_time(t_data *data)
 		data->start_time = (1000 * ct.tv_sec + ct.tv_usec / 1000);
 	time_mill = (long)(1000 * ct.tv_sec + ct.tv_usec / 1000 - data->start_time);
 	return (time_mill);
-}
-
-int	ft_check_before_eat(t_data *data, t_philo *philo)
-{
-	while (philo->eat_times == 0)
-	{
-		if (ft_current_time(data) >= data->time_to_die)
-			return (0);
-	}
-	return (1);
 }
 
 void	ft_msleep(int sleep_ms, t_data *data)

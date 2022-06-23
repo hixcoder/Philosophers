@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:28:55 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/21 14:18:07 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/23 13:16:58 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_atoi(const char *str)
 int	ft_parse_data(t_data *data, char **av)
 {
 	data->nbr_of_philos = ft_atoi(av[1]);
-	if (data->nbr_of_philos == ERROR)
+	if (data->nbr_of_philos <= 0)
 		return (ERROR);
 	data->time_to_die = ft_atoi(av[2]);
 	if (data->time_to_die == ERROR)

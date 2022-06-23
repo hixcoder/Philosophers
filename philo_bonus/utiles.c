@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 11:28:06 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/22 18:29:18 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/23 15:07:43 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_msleep(int sleep_ms, t_data *data)
 
 	end_time = ft_current_time(data) + sleep_ms;
 	while (ft_current_time(data) < end_time)
-		usleep(50);
+		usleep(1);
 }
 
 void	ft_is_died(t_philo	*philo)
@@ -47,17 +47,42 @@ void	ft_is_died(t_philo	*philo)
 		{
 			sem_wait(data->print_sem);
 			printf("%ld %d died\n", ft_current_time(data), philo->philo_id);
-			ft_kill(data);
+			sem_post(data->done_sem);
 			exit(0);
 		}
 	}
 } 
 
+void	*eated_philos(void *arg)
+{
+	int		i;
+	t_data	*data;
+	
+	i = -1;
+	data = (t_data *) arg;
+	while(++i < data->nbr_of_philos)
+		sem_wait(data->finish_eat_sem);
+	while(++i < data->nbr_of_philos)
+		kill(data->pids[i], SIGKILL);
+	waitpid(-1, NULL, 0);
+	exit(0);
+}
+
 void	ft_wait(t_data *data)
 {
 	int i;
-	
+	pthread_t th;
+
 	i = -1;
-	while (++i < data->nbr_of_philos)
-		waitpid(data->pids[i], NULL, 0);
+	if (data->nbr_of_meals > 0)
+	{
+		if (pthread_create(&th, NULL, &eated_philos, (void *) data) != 0)
+			ft_malloc_error(data, "Thread Error");
+		if (pthread_detach(th) != 0)
+			ft_malloc_error(data, "Thread Error");
+	}
+	sem_wait(data->done_sem);
+	while(++i < data->nbr_of_philos)
+		kill(data->pids[i], SIGKILL);
+	waitpid(-1, NULL, 0);
 }

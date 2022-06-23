@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:43:39 by ubunto            #+#    #+#             */
-/*   Updated: 2022/06/22 17:12:43 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/23 14:41:51 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,13 @@ void	ft_create_forks(t_data *data)
 {
 	sem_unlink("forks_sem");
 	sem_unlink("print_sem");
+	sem_unlink("done_sem");
+	sem_unlink("finish_eat_sem");
 	data->forks_sem = sem_open("forks_sem", O_CREAT, 0644, data->nbr_of_philos);
 	data->print_sem = sem_open("print_sem", O_CREAT, 0644, 1);
-	if (data->forks_sem == SEM_FAILED || data->print_sem == SEM_FAILED)
+	data->done_sem = sem_open("done_sem", O_CREAT, 0644, 0);
+	data->done_sem = sem_open("finish_eat_sem", O_CREAT, 0644, 0);
+	if (data->forks_sem == SEM_FAILED || data->print_sem == SEM_FAILED || data->done_sem == SEM_FAILED  || data->finish_eat_sem == SEM_FAILED)
 		exit(EXIT_FAILURE);
 }
 
@@ -39,17 +43,30 @@ void	*routine(void *arg)
 		{
 			ft_eat(data, philo);
 			if (philo->eat_times >= data->nbr_of_meals && data->nbr_of_meals > 0)
+			{
+				sem_post(data->finish_eat_sem);
 				exit(EXIT_SUCCESS);
+			}
 			ft_sleep_think(data, philo);
 		}
 	}
 	return (NULL);
 }
 
+void	ft_philo_init(t_data *data, int i)
+{
+	data->philos[i].philo_id = i + 1;
+	data->philos[i].data = (struct t_data *) data;
+	data->philos[i].eat_times = 0;
+	data->philos[i].time_of_last_eat = 0;
+	data->philos[i].lfork = 0;
+	data->philos[i].rfork = 0;
+}
+
 void	ft_create_philos(t_data *data)
 {
 	int	i;
-	// pthread_t th;
+	int j;
 
 	data->philos = malloc(sizeof(t_philo) * data->nbr_of_philos);
 	data->pids = malloc(sizeof(int) * data->nbr_of_philos);
@@ -58,33 +75,21 @@ void	ft_create_philos(t_data *data)
 	i = -1;
 	while (++i < data->nbr_of_philos)
 	{
-		data->philos[i].philo_id = i + 1;
-		data->philos[i].data = (struct t_data *) data;
-		data->philos[i].eat_times = 0;
-		data->philos[i].time_of_last_eat = 0;
-		data->philos[i].lfork = 0;
-		data->philos[i].rfork = 0;
-
-		data->pids[i] = fork();
-		if (data->pids[i] == -1)
-		{
-			ft_kill(data);
-			ft_malloc_error(data, "Allocation Error");
-		}
-		if (data->pids[i] == 0)
+		ft_philo_init(data, i);
+		j = fork();
+		if (j > 0)
+			data->pids[i] = j;
+		if (j == 0)
 		{
 			if (pthread_create(&data->philos[i].philo_th, NULL, &routine, (void *) &data->philos[i]) != 0)
-			{
-				ft_kill(data);
 				ft_malloc_error(data, "Thread Error");
-			}
 			if (pthread_detach(data->philos[i].philo_th) != 0)
-			{
-				ft_kill(data);
 				ft_malloc_error(data, "Thread Error");
-			}
 			ft_is_died(&data->philos[i]);
 		}
+		else if (j == -1)
+			ft_malloc_error(data, "Allocation Error");
+		
 	}
-	// ft_death_checker(data);
 }
+

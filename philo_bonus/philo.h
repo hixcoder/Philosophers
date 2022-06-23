@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 10:46:38 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/22 16:51:25 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/23 14:39:31 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,20 @@ typedef struct s_data
 	sem_t			*print_sem;
 	t_philo			*philos;
 	sem_t			*forks_sem;
+	sem_t			*done_sem;
+	sem_t			*finish_eat_sem;
 }	t_data;
 
-void	ft_parse_data(t_data *data, char **av);
+void	ft_parse_data(t_data *data, char **av, int ac);
 
 void	ft_clean(t_data *data);
 void	ft_error(char *s);
 void	ft_malloc_error(t_data *data, char *message);
-void	ft_kill(t_data *data);
 
 long	ft_current_time(t_data *data);
 void	ft_msleep(int sleep_ms, t_data *data);
 void	ft_is_died(t_philo	*philo);
 void	ft_wait(t_data *data);
-// void	ft_death_checker(t_data *data);
 
 void	ft_take_rfork(t_data *data, t_philo *philos);
 void	ft_take_lfork(t_data *data, t_philo *philos);

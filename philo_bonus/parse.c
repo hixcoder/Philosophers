@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:28:55 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/22 15:33:03 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/23 13:19:32 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,13 @@ int	ft_atoi(const char *str)
 	return ((int) nbr);
 }
 
-void	ft_parse_data(t_data *data, char **av)
+void	ft_parse_data(t_data *data, char **av, int ac)
 {
+	if (ac < 5 || ac > 6)
+		ft_error("Invalid Arguments");
 	data->nbr_of_philos = ft_atoi(av[1]);
+	if (data->nbr_of_philos <= 0)
+		ft_error("Invalid Arguments");
 	data->time_to_die = ft_atoi(av[2]);
 	data->time_to_eat = ft_atoi(av[3]);
 	data->time_to_sleep = ft_atoi(av[4]);
