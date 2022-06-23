@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:28:55 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/23 13:16:58 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/23 23:12:59 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ int	ft_parse_data(t_data *data, char **av)
 		return (ERROR);
 	data->start_time = 0;
 	data->death_status = 0;
+	data->philos_finished_eating = 0;
 	return (SUCCESS);
 }

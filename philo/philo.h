@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 10:46:38 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/20 13:39:20 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/23 23:12:59 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_data
 	int				time_to_sleep;
 	int				nbr_of_meals;
 	long long		start_time;
+	int				philos_finished_eating;
 	int				death_status;
 	pthread_mutex_t	print_mutex;
 	t_philo			*philos;

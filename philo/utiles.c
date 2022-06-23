@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 11:28:06 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/22 16:47:53 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/23 23:12:59 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_death_checker(t_data *data)
 {
 	int	j;
 
-	while (1)
+	while (data->philos_finished_eating < data->nbr_of_philos)
 	{
 		j = -1;
 		while (++j < data->nbr_of_philos)

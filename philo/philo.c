@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:43:39 by ubunto            #+#    #+#             */
-/*   Updated: 2022/06/21 13:59:05 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/23 23:12:59 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,11 @@ void	*routine(void *arg)
 		if (philo->lfork == 1 && philo->rfork == 1 && data->nbr_of_meals != 0)
 		{
 			ft_eat(data, philo);
-			if (philo->eat_times >= data->nbr_of_meals
-				&& data->nbr_of_meals > 0)
+			if (philo->eat_times == data->nbr_of_meals)
+			{
+				data->philos_finished_eating++;
 				break ;
+			}
 			ft_sleep_think(data, philo);
 		}
 	}
