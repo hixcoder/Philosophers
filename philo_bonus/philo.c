@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:43:39 by ubunto            #+#    #+#             */
-/*   Updated: 2022/06/23 14:41:51 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/23 16:04:35 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_create_forks(t_data *data)
 	data->forks_sem = sem_open("forks_sem", O_CREAT, 0644, data->nbr_of_philos);
 	data->print_sem = sem_open("print_sem", O_CREAT, 0644, 1);
 	data->done_sem = sem_open("done_sem", O_CREAT, 0644, 0);
-	data->done_sem = sem_open("finish_eat_sem", O_CREAT, 0644, 0);
+	data->finish_eat_sem = sem_open("finish_eat_sem", O_CREAT, 0644, 0);
 	if (data->forks_sem == SEM_FAILED || data->print_sem == SEM_FAILED || data->done_sem == SEM_FAILED  || data->finish_eat_sem == SEM_FAILED)
 		exit(EXIT_FAILURE);
 }
@@ -42,7 +42,7 @@ void	*routine(void *arg)
 		if (philo->lfork == 1 && philo->rfork == 1 && data->nbr_of_meals != 0)
 		{
 			ft_eat(data, philo);
-			if (philo->eat_times >= data->nbr_of_meals && data->nbr_of_meals > 0)
+			if (philo->eat_times == data->nbr_of_meals && data->nbr_of_meals > 0)
 			{
 				sem_post(data->finish_eat_sem);
 				exit(EXIT_SUCCESS);

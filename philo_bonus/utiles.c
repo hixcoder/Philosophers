@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 11:28:06 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/23 15:07:43 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/23 16:13:17 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ long	ft_current_time(t_data *data)
 	struct timeval	ct;
 
 	gettimeofday(&ct, NULL);
-	if (data->start_time == 0)
-		data->start_time = (1000 * ct.tv_sec + ct.tv_usec / 1000);
+	// if (data->start_time == 0)
+	// 	data->start_time = (1000 * ct.tv_sec + ct.tv_usec / 1000);
 	time_mill = (long)(1000 * ct.tv_sec + ct.tv_usec / 1000 - data->start_time);
 	return (time_mill);
 }
@@ -60,12 +60,11 @@ void	*eated_philos(void *arg)
 	
 	i = -1;
 	data = (t_data *) arg;
+
 	while(++i < data->nbr_of_philos)
 		sem_wait(data->finish_eat_sem);
-	while(++i < data->nbr_of_philos)
-		kill(data->pids[i], SIGKILL);
-	waitpid(-1, NULL, 0);
-	exit(0);
+	sem_post(data->done_sem);
+	return (NULL);
 }
 
 void	ft_wait(t_data *data)

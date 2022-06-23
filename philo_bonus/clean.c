@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 09:38:58 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/23 13:36:01 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/23 15:54:17 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ft_clean(t_data *data)
 	sem_close(data->forks_sem);
 	sem_close(data->print_sem);
 	sem_close(data->done_sem);
+	sem_close(data->finish_eat_sem);
 	free(data->philos);
 	data->philos = NULL;
 	free(data->pids);
