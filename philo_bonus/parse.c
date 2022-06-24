@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:28:55 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/24 10:43:18 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/24 12:06:34 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,14 @@ void	ft_parse_data(t_data *data, char **av, int ac)
 	if (data->nbr_of_philos <= 0)
 		ft_error("Invalid Arguments");
 	data->time_to_die = ft_atoi(av[2]);
+	if (data->time_to_die <= 0)
+		ft_error("Invalid Arguments");
 	data->time_to_eat = ft_atoi(av[3]);
+	if (data->time_to_eat <= 0)
+		ft_error("Invalid Arguments");
 	data->time_to_sleep = ft_atoi(av[4]);
+	if (data->time_to_sleep <= 0)
+		ft_error("Invalid Arguments");
 	if (av[5] != NULL)
 		data->nbr_of_meals = ft_atoi(av[5]);
 	else
