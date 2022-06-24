@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:28:55 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/23 16:15:23 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/24 10:43:18 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_atoi(const char *str)
 void	ft_parse_data(t_data *data, char **av, int ac)
 {
 	struct timeval	ct;
-	
+
 	if (ac < 5 || ac > 6)
 		ft_error("Invalid Arguments");
 	data->nbr_of_philos = ft_atoi(av[1]);

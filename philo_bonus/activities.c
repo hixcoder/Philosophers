@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:12:27 by ubunto            #+#    #+#             */
-/*   Updated: 2022/06/22 15:02:37 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/24 10:42:30 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_eat(t_data *data, t_philo *philo)
 	philo->time_of_last_eat = ft_current_time(data);
 	ft_msleep(data->time_to_eat, data);
 	philo->eat_times++;
-	
 	philo->rfork = 0;
 	philo->lfork = 0;
 	sem_post(data->forks_sem);
@@ -51,7 +50,6 @@ void	ft_sleep_think(t_data *data, t_philo *philo)
 	printf("%ld %d is sleeping\n", ft_current_time(data), philo->philo_id);
 	sem_post(data->print_sem);
 	ft_msleep(data->time_to_sleep, data);
-
 	sem_wait(data->print_sem);
 	printf("%ld %d is thinking\n", ft_current_time(data), philo->philo_id);
 	sem_post(data->print_sem);

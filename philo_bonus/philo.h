@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 10:46:38 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/23 14:39:31 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/24 10:48:55 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # include <string.h>
 # include <sys/time.h>
 # include <pthread.h>
-#include <fcntl.h> 
-#include <semaphore.h>
-#include <signal.h>
+# include <fcntl.h> 
+# include <semaphore.h>
+# include <signal.h>
 
 # define ERROR -1
 # define SUCCESS 0

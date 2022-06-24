@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 11:28:06 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/23 23:40:54 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/24 10:49:47 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ long	ft_current_time(t_data *data)
 	struct timeval	ct;
 
 	gettimeofday(&ct, NULL);
-	// if (data->start_time == 0)
-	// 	data->start_time = (1000 * ct.tv_sec + ct.tv_usec / 1000);
 	time_mill = (long)(1000 * ct.tv_sec + ct.tv_usec / 1000 - data->start_time);
 	return (time_mill);
 }
@@ -36,11 +34,11 @@ void	ft_msleep(int sleep_ms, t_data *data)
 
 void	ft_is_died(t_philo	*philo)
 {
-	int	time_without_eat;
-	t_data *data;
-	
+	int		time_without_eat;
+	t_data	*data;
+
 	data = (t_data *) philo->data;
-	while(1)
+	while (1)
 	{
 		time_without_eat = ft_current_time(data) - philo->time_of_last_eat;
 		if (time_without_eat >= data->time_to_die)
@@ -51,17 +49,16 @@ void	ft_is_died(t_philo	*philo)
 			exit(0);
 		}
 	}
-} 
+}
 
 void	*eated_philos(void *arg)
 {
 	int		philos_finished_eating;
 	t_data	*data;
-	
+
 	philos_finished_eating = -1;
 	data = (t_data *) arg;
-
-	while(++philos_finished_eating < data->nbr_of_philos)
+	while (++philos_finished_eating < data->nbr_of_philos)
 		sem_wait(data->finish_eat_sem);
 	sem_post(data->done_sem);
 	return (NULL);
@@ -69,8 +66,8 @@ void	*eated_philos(void *arg)
 
 void	ft_wait(t_data *data)
 {
-	int i;
-	pthread_t th;
+	int			i;
+	pthread_t	th;
 
 	i = -1;
 	if (data->nbr_of_meals > 0)
@@ -81,7 +78,7 @@ void	ft_wait(t_data *data)
 			ft_malloc_error(data, "Thread Error");
 	}
 	sem_wait(data->done_sem);
-	while(++i < data->nbr_of_philos)
+	while (++i < data->nbr_of_philos)
 		kill(data->pids[i], SIGKILL);
 	waitpid(-1, NULL, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:28:55 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/23 23:12:59 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/24 10:50:24 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_parse_data(t_data *data, char **av)
 	if (data->time_to_sleep == ERROR)
 		return (ERROR);
 	if (av[5] != NULL)
-		data->nbr_of_meals = ft_atoi(av[5]);		
+		data->nbr_of_meals = ft_atoi(av[5]);
 	else
 		data->nbr_of_meals = -2;
 	if (data->nbr_of_meals == ERROR)

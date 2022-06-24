@@ -6,7 +6,7 @@
 /*   By: hboumahd <hboumahd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 10:46:35 by hboumahd          #+#    #+#             */
-/*   Updated: 2022/06/23 13:42:26 by hboumahd         ###   ########.fr       */
+/*   Updated: 2022/06/24 10:43:13 by hboumahd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int ac, char **av)
 	ft_parse_data(&data, av, ac);
 	ft_create_forks(&data);
 	ft_create_philos(&data);
-	
 	ft_wait(&data);
 	ft_clean(&data);
 	exit(SUCCESS);
