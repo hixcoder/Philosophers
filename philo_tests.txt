@@ -1,0 +1,52 @@
+#mandatory:
+
+./philo 1 200 200 200
+./philo 2 800 200 200
+./philo 5 800 200 200
+./philo 5 800 200 200 7
+./philo 4 410 200 200
+./philo 4 310 200 200
+./philo 4 500 200 1.2
+./philo 4 0 200 200
+./philo 4 -500 200 200
+./philo 4 500 200 2147483647
+./philo 4 2147483647 200 200
+./philo 4 214748364732 200 200
+./philo 4 200 210 200
+./philo 4 410 200 200l
+./philo 4 410 200l 200
+./philo 4 4l10 200 200
+./philo 4l 410 200 200
+./philo -4 410 200 200
+./philo 4 -410 200 200
+./philo 4 410 -200 200
+./philo 4 410 200 -200
+./philo 200 60 200 200
+./philo 200 410 200 200
+
+
+#bonus:
+
+./philo_bonus 1 200 200 200
+./philo_bonus 2 800 200 200
+./philo_bonus 5 800 200 200
+./philo_bonus 5 800 200 200 7
+./philo_bonus 4 410 200 200
+./philo_bonus 4 310 200 200
+./philo_bonus 4 500 200 1.2
+./philo_bonus 4 0 200 200
+./philo_bonus 4 -500 200 200
+./philo_bonus 4 500 200 2147483647
+./philo_bonus 4 2147483647 200 200
+./philo_bonus 4 214748364732 200 200
+./philo_bonus 4 200 210 200
+./philo_bonus 4 410 200 200l
+./philo_bonus 4 410 200l 200
+./philo_bonus 4 4l10 200 200
+./philo_bonus 4l 410 200 200
+./philo_bonus -4 410 200 200
+./philo_bonus 4 -410 200 200
+./philo_bonus 4 410 -200 200
+./philo_bonus 4 410 200 -200
+./philo_bonus 200 60 200 200
+./philo_bonus 200 410 200 200
